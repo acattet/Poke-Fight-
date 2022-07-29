@@ -1,31 +1,31 @@
 import styles from './styles.module.css';
 import {useState} from "react"; 
 import axios from 'axios';
-function App() {
 
-const [pokemonName, SetPokemonName] = useState("")
-const [pokemonChosen, setPokemonChosen] = useState(false);
-const [pokemon, SetPokemon] = useState({
-  name: "", 
-  img: "", 
-  hp: "",
-  attack: "",
-  defense: "",
-})
+export const SelectionScreen = () => {
+  const [pokemonName, SetPokemonName] = useState("")
+  const [pokemonChosen, setPokemonChosen] = useState(false);
+  const [pokemon, SetPokemon] = useState({
+    name: "", 
+    img: "", 
+    hp: "",
+    attack: "",
+    defense: "",
+  })
 
-const searchPokemon = () => {
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then((respone)=>{
-    SetPokemon({
-      name: pokemonName, 
-      img: respone.data.sprites.front_default, 
-      hp: respone.data.stats[0].base_stat,
-      attack: respone.data.stats[1].base_stat,
-      defense: respone.data.stats[2].base_stat,
-      });
-      setPokemonChosen(true);
-   }  
-  );
-};
+  const searchPokemon = () => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then((respone)=>{
+      SetPokemon({
+        name: pokemonName, 
+        img: respone.data.sprites.front_default, 
+        hp: respone.data.stats[0].base_stat,
+        attack: respone.data.stats[1].base_stat,
+        defense: respone.data.stats[2].base_stat,
+        });
+        setPokemonChosen(true);
+    }  
+    );
+  };
   return (
    <div className='App'>
      <div className='title'>
@@ -58,4 +58,5 @@ const searchPokemon = () => {
    </div>
   );
 }
-export default App;
+
+export default SelectionScreen;
