@@ -3,9 +3,9 @@ export * from './Bar';
 export * from './Battle';
 export * from './EndMenu';
 export * from './HomePage';
-export * from './StartMenu';
+export * from "./Login";
+export * from "./Signup";
 export * from './BattleMenu';
 export * from './PlayerSummary';
 export * from './BattleAnnouncer';
 export * from './SelectionScreen';
-

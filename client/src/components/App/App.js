@@ -1,9 +1,10 @@
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
-import { Battle, EndMenu, StartMenu, HomePage, SelectionScreen } from 'components';
+import { Battle, EndMenu, HomePage, SelectionScreen, Login, Signup } from 'components';
 
 const httpLink = createHttpLink({
   uri: "/graphql"
@@ -39,38 +40,45 @@ export const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <div className={styles.main}>
-
-
-        {mode === 'start' && (
-          <StartMenu onStartClick={() => setMode('homepage')} />
-        )}
-
-
-        {mode === 'homepage' && (
-          <HomePage battleClick={() => setMode('SelectionScreen')} />
-        )}
-
-
-
-        {mode === 'SelectionScreen' && (
-          <SelectionScreen characterClick={() => setMode('battle')}/>
-        )}
-
-
-        {mode === 'battle' && (
-          <Battle
-            onGameEnd={winner => {
-              setWinner(winner);
-              setMode('gameOver');
-            }}
-          />
-        )}
-
-        {mode === 'gameOver' && !!winner && (
-          <EndMenu winner={winner} onStartClick={() => setMode('battle')} />
-        )}
-      </div>
+      <Router>
+        <div className={styles.main}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={
+              <>
+                <Login />
+                <Signup />
+              </>
+            } />
+          </Routes>
+        </div>
+      </Router>
     </ApolloProvider>
   );
 };
+/*
+            {mode === 'start' && (
+              <StartMenu onStartClick={() => setMode('homepage')} />
+            )}
+
+            {mode === 'homepage' && (
+              <HomePage battleClick={() => setMode('SelectionScreen')} />
+            )}
+
+            {mode === 'SelectionScreen' && (
+              <SelectionScreen characterClick={() => setMode('battle')}/>
+            )}
+
+            {mode === 'battle' && (
+              <Battle
+                onGameEnd={winner => {
+                  setWinner(winner);
+                  setMode('gameOver');
+                }}
+              />
+            )}
+
+            {mode === 'gameOver' && !!winner && (
+              <EndMenu winner={winner} onStartClick={() => setMode('battle')} />
+            )}
+*/
