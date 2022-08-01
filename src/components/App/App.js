@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
-import { Battle, EndMenu, StartMenu, HomePage, SelectionScreen } from 'components';
+import { Battle, EndMenu, StartMenu, HomePage, SelectionScreen, } from 'components';
 
 export const App = () => {
   const [winner, setWinner] = useState();

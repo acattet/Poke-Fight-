@@ -1,7 +1,7 @@
-import styles from './styles.module.css';
 import {useState} from "react"; 
 import axios from 'axios';
-function App() {
+import styles from './styles.module.css';
+export const SelectionScreen = () => {
 
 const [pokemonName, SetPokemonName] = useState("")
 const [pokemonChosen, setPokemonChosen] = useState(false);
@@ -58,4 +58,5 @@ const searchPokemon = () => {
    </div>
   );
 }
-export default App;
+
+
