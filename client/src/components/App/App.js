@@ -36,20 +36,15 @@ export const App = () => {
     }
   }, [mode]);
 
-  //each onclick changes to the next page
-
   return (
     <ApolloProvider client={client}>
       <Router>
         <div className={styles.main}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={
-              <>
-                <Login />
-                <Signup />
-              </>
-            } />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/select" element={<SelectionScreen />} />
           </Routes>
         </div>
       </Router>

@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import {useState} from "react"; 
+import { useState } from "react"; 
 import axios from 'axios';
 
 export const SelectionScreen = () => {
@@ -23,39 +23,34 @@ export const SelectionScreen = () => {
         defense: respone.data.stats[2].base_stat,
         });
         setPokemonChosen(true);
-    }  
+      }  
     );
   };
   return (
-   <div className='App'>
-     <div className='title'>
-     <h1> Pokemon Stats</h1>
-     <input type="text"
-      onChange={(event) => {
+    <div className='App'>
+      <div className='title'>
+      <h1>Pokemon Stats</h1>
+      <input type="text"
+        onChange={(event) => {
         SetPokemonName(event.target.value)
         }} 
-        />
-     <button onClick={searchPokemon}>Search Pokemon</button>
-     </div>
-<div className="DisplaySection">
-  {!pokemonChosen ? (
-  <h1>Please Enter a Pokemon</h1>
-  ) : (
-    <>
-  <h1>{pokemon.name}</h1>
-  <img src={pokemon.img}/>
-  <h4>HP: {pokemon.hp} </h4>
-  <h4>Attack: {pokemon.attack} </h4>
-  <h4>Defense: {pokemon.defense} </h4>
-  </>
-  )}
-
-  
-  </div>
-
-  
-
-   </div>
+      />
+      <button onClick={searchPokemon}>Search Pokemon</button>
+      </div>
+      <div className="DisplaySection">
+        {!pokemonChosen ? (
+        <h1>Please Enter a Pokemon</h1>
+        ) : (
+          <>
+        <h1>{pokemon.name}</h1>
+        <img src={pokemon.img}/>
+        <h4>HP: {pokemon.hp}</h4>
+        <h4>Attack: {pokemon.attack}</h4>
+        <h4>Defense: {pokemon.defense}</h4>
+        </>
+        )}
+      </div>
+    </div>
   );
 }
 

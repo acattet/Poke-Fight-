@@ -10,13 +10,14 @@ export const HomePage = ({ battleClick, onStartClick }) => {
 
   return (
     <div className={styles.main}>
-      {Auth.loggedIn() ? (
-        <>
-          <a href="/" onClick={logout}>Logout</a>
-          <button className={styles.startButton} onClick={battleClick}>
-            Character Selection!
-          </button>
-        </>
+      <div className={styles.homeContainer}>
+        {Auth.loggedIn() ? (
+          <>
+            <a href="/" onClick={logout}>Logout</a>
+            <button className={styles.startButton} onClick={battleClick}>
+              Character Selection!
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login">
@@ -24,11 +25,15 @@ export const HomePage = ({ battleClick, onStartClick }) => {
                 Login!
               </button>
             </Link>
-            {/*<button className={styles.startButton} onClick={onStartClick}>
-              Login!
-          </button>*/}
+            <p>Don't have an account?</p>
+            <Link to="/signup">
+              <button className={styles.startButton}>
+                Sign up!
+              </button>
+            </Link>
           </>
         )}
+      </div>
     </div>
   );
 };

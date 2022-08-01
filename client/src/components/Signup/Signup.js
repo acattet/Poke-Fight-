@@ -1,4 +1,5 @@
 import styles from './styles.module.css';
+import { Link } from "react-router-dom";
 import Auth from '../../utils/auth.js';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
@@ -35,10 +36,10 @@ export const Signup = () => {
 
     return (
         <main className={styles.main}>
-            <h4>Sign Up</h4>
+            <h1>Sign Up</h1>
             <form className={styles.signupForm} onSubmit={handleFormSubmit}>
                 <input
-                    className='form-input'
+                    className={styles.formInput}
                     placeholder='Your username'
                     name='username'
                     type='username'
@@ -47,7 +48,7 @@ export const Signup = () => {
                     onChange={handleChange}
                 />
                 <input
-                    className='form-input'
+                    className={styles.formInput}
                     placeholder='Your email'
                     name='email'
                     type='email'
@@ -56,7 +57,7 @@ export const Signup = () => {
                     onChange={handleChange}
                 />
                 <input
-                    className='form-input'
+                    className={styles.formInput}
                     placeholder='******'
                     name='password'
                     type='password'
@@ -64,10 +65,16 @@ export const Signup = () => {
                     value={formState.password}
                     onChange={handleChange}
                 />
-                <button className='btn d-block w-100' type='submit'>
+                <button className={styles.startButton} type='submit'>
                     Submit
                 </button>
             </form>
+            <p>Already have an account?</p>
+            <Link to="/login">
+              <button className={styles.startButton}>
+                Login!
+              </button>
+            </Link>
             {error && <div>Sign up failed</div>}
         </main>
     );

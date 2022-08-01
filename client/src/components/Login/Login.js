@@ -1,4 +1,5 @@
 import styles from './styles.module.css';
+import { Link } from "react-router-dom";
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
@@ -41,10 +42,10 @@ export const Login = (props) => {
   
     return (
         <main className={styles.main}>
-            <h4>Login</h4>
+            <h1>Login</h1>
             <form className={styles.loginForm} onSubmit={handleFormSubmit}>
                 <input
-                    className='form-input'
+                    className={styles.formInput}
                     placeholder='Your email'
                     name='email'
                     type='email'
@@ -53,7 +54,7 @@ export const Login = (props) => {
                     onChange={handleChange}
                 />
                 <input
-                    className='form-input'
+                    className={styles.formInput}
                     placeholder='******'
                     name='password'
                     type='password'
@@ -61,10 +62,16 @@ export const Login = (props) => {
                     value={formState.password}
                     onChange={handleChange}
                 />
-                <button className='btn d-block w-100' type='submit'>
+                <button className={styles.startButton} type='submit'>
                     Submit
                 </button>
             </form>
+            <p>Don't have an account?</p>
+            <Link to="/signup">
+              <button className={styles.startButton}>
+                Sign up!
+              </button>
+            </Link>
             {error && <div>Login failed</div>}
         </main>
     );
